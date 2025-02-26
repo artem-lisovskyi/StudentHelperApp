@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/font-icons.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Res1</title>
+    <title>Archive</title>
 </head>
 <body>
 <section class="first-section">
@@ -17,6 +17,8 @@
         <div th:replace="fragments/header :: header"></div>
     </div>
 </section>
+
+<div th:replace="fragments/link_fragment :: linkListFragment('Корисні посилання на архіви робіт', ${links})"></div>
 
 </body>
 </html>

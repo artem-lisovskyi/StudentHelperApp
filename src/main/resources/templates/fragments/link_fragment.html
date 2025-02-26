@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="stylesheet" href="/css/font-icons.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Useful Links</title>
+</head>
+<body>
+<div th:fragment="linkListFragment(title, links)" class="link-list">
+    <h1 class="link-list-title" th:text="${title}"></h1>
+    <ul class="link-list-items">
+        <li th:each="link : ${links}" class="link-list-item">
+            <a th:href="${link.url}" th:text="${link.title}" class="link-list-link"></a>
+            <p th:text="${link.description}" class="link-list-description"></p>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>

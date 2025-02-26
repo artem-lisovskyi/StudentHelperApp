@@ -86,9 +86,12 @@ CREATE TABLE answer_option
 );
 
 -- 1. Заповнення таблиці subject
-INSERT INTO subject (name) VALUES ('Програмування на Java');
-INSERT INTO subject (name) VALUES ('Бази Даних');
-INSERT INTO subject (name) VALUES ('Алгоритми та Структури Даних');
+INSERT INTO subject (name)
+VALUES ('Програмування на Java');
+INSERT INTO subject (name)
+VALUES ('Бази Даних');
+INSERT INTO subject (name)
+VALUES ('Алгоритми та Структури Даних');
 
 -- Припускаємо, що автоматично згенеровані id:
 -- subject: 1 - Програмування на Java, 2 - Бази Даних, 3 - Алгоритми та Структури Даних
@@ -96,16 +99,22 @@ INSERT INTO subject (name) VALUES ('Алгоритми та Структури �
 -- 2. Заповнення таблиці ticket
 
 -- Для предмету "Програмування на Java" (subject_id = 1)
-INSERT INTO ticket (subject_id, name) VALUES (1, 'Білет 1: Основи Java');
-INSERT INTO ticket (subject_id, name) VALUES (1, 'Білет 2: Об''єктно-орієнтоване програмування');
+INSERT INTO ticket (subject_id, name)
+VALUES (1, 'Білет 1: Основи Java');
+INSERT INTO ticket (subject_id, name)
+VALUES (1, 'Білет 2: Об''єктно-орієнтоване програмування');
 
 -- Для предмету "Бази Даних" (subject_id = 2)
-INSERT INTO ticket (subject_id, name) VALUES (2, 'Білет 1: Основи SQL');
-INSERT INTO ticket (subject_id, name) VALUES (2, 'Білет 2: Нормалізація даних');
+INSERT INTO ticket (subject_id, name)
+VALUES (2, 'Білет 1: Основи SQL');
+INSERT INTO ticket (subject_id, name)
+VALUES (2, 'Білет 2: Нормалізація даних');
 
 -- Для предмету "Алгоритми та Структури Даних" (subject_id = 3)
-INSERT INTO ticket (subject_id, name) VALUES (3, 'Білет 1: Сортування');
-INSERT INTO ticket (subject_id, name) VALUES (3, 'Білет 2: Структури даних');
+INSERT INTO ticket (subject_id, name)
+VALUES (3, 'Білет 1: Сортування');
+INSERT INTO ticket (subject_id, name)
+VALUES (3, 'Білет 2: Структури даних');
 
 -- Припускаємо, що id білетів:
 -- 1,2 - для Програмування на Java; 3,4 - для Бази Даних; 5,6 - для Алгоритмів та Структур
@@ -113,34 +122,52 @@ INSERT INTO ticket (subject_id, name) VALUES (3, 'Білет 2: Структур
 -- 3. Заповнення таблиці question
 
 -- Для "Білет 1: Основи Java" (ticket_id = 1)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (1, 'Що таке JVM і яка її роль?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (1, 'Які основні принципи ООП?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (1, 'Що таке поліморфізм?', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (1, 'Що таке JVM і яка її роль?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (1, 'Які основні принципи ООП?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (1, 'Що таке поліморфізм?', 3);
 
 -- Для "Білет 2: Об'єктно-орієнтоване програмування" (ticket_id = 2)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (2, 'Як працює збірка сміття в Java?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (2, 'Що таке інтерфейс?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (2, 'Яка різниця між абстрактним класом та інтерфейсом?', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (2, 'Як працює збірка сміття в Java?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (2, 'Що таке інтерфейс?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (2, 'Яка різниця між абстрактним класом та інтерфейсом?', 3);
 
 -- Для "Білет 1: Основи SQL" (ticket_id = 3)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (3, 'Що таке реляційна база даних?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (3, 'Що таке SQL?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (3, 'Які типи зв''язків існують у базах даних?', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (3, 'Що таке реляційна база даних?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (3, 'Що таке SQL?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (3, 'Які типи зв''язків існують у базах даних?', 3);
 
 -- Для "Білет 2: Нормалізація даних" (ticket_id = 4)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (4, 'Що таке нормалізація?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (4, 'Які існують нормальні форми?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (4, 'Що таке денормалізація?', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (4, 'Що таке нормалізація?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (4, 'Які існують нормальні форми?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (4, 'Що таке денормалізація?', 3);
 
 -- Для "Білет 1: Сортування" (ticket_id = 5)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (5, 'Які алгоритми сортування ви знаєте?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (5, 'Що таке бінарний пошук?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (5, 'Поясніть принцип роботи алгоритму QuickSort.', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (5, 'Які алгоритми сортування ви знаєте?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (5, 'Що таке бінарний пошук?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (5, 'Поясніть принцип роботи алгоритму QuickSort.', 3);
 
 -- Для "Білет 2: Структури даних" (ticket_id = 6)
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (6, 'Що таке стек і як він працює?', 1);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (6, 'Що таке черга?', 2);
-INSERT INTO question (ticket_id, question_text, question_order) VALUES (6, 'Які основні властивості хеш-таблиці?', 3);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (6, 'Що таке стек і як він працює?', 1);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (6, 'Що таке черга?', 2);
+INSERT INTO question (ticket_id, question_text, question_order)
+VALUES (6, 'Які основні властивості хеш-таблиці?', 3);
 
 -- Припускаємо, що id питань генеруються у порядку:
 -- для білета 1: id 1-3, білета 2: id 4-6, білета 3: id 7-9, білета 4: id 10-12, білета 5: id 13-15, білета 6: id 16-18
@@ -148,110 +175,194 @@ INSERT INTO question (ticket_id, question_text, question_order) VALUES (6, 'Як
 -- 4. Заповнення таблиці answer_option
 
 -- Для питання id = 1: "Що таке JVM і яка її роль?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (1, 'JVM – це компілятор для Java', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (1, 'JVM – інтерпретує байткод і забезпечує платформну незалежність', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (1, 'JVM – це віртуальна машина для виконання програм на C++', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (1, 'JVM – це засіб управління пам''яттю', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (1, 'JVM – це компілятор для Java', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (1, 'JVM – інтерпретує байткод і забезпечує платформну незалежність', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (1, 'JVM – це віртуальна машина для виконання програм на C++', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (1, 'JVM – це засіб управління пам''яттю', false);
 
 -- Для питання id = 2: "Які основні принципи ООП?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (2, 'Інкапсуляція, наслідування, поліморфізм та абстракція', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (2, 'Функціональне програмування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (2, 'Процедурне програмування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (2, 'Рекурсія та ітерація', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (2, 'Інкапсуляція, наслідування, поліморфізм та абстракція', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (2, 'Функціональне програмування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (2, 'Процедурне програмування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (2, 'Рекурсія та ітерація', false);
 
 -- Для питання id = 3: "Що таке поліморфізм?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (3, 'Здатність об''єктів приймати різні форми', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (3, 'Створення копій об''єктів', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (3, 'Принцип наслідування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (3, 'Метод перевантаження операторів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (3, 'Здатність об''єктів приймати різні форми', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (3, 'Створення копій об''єктів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (3, 'Принцип наслідування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (3, 'Метод перевантаження операторів', false);
 
 -- Для питання id = 4: "Як працює збірка сміття в Java?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (4, 'Видаляє неактивні об''єкти з пам''яті', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (4, 'Компілірує код в машинний', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (4, 'Оптимізує виконання циклів', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (4, 'Зберігає дані в базі даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (4, 'Видаляє неактивні об''єкти з пам''яті', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (4, 'Компілірує код в машинний', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (4, 'Оптимізує виконання циклів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (4, 'Зберігає дані в базі даних', false);
 
 -- Для питання id = 5: "Що таке інтерфейс?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (5, 'Конкретна реалізація класу', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (5, 'Контракт, який описує поведінку класу', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (5, 'Механізм наслідування даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (5, 'Спосіб компіляції програм', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (5, 'Конкретна реалізація класу', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (5, 'Контракт, який описує поведінку класу', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (5, 'Механізм наслідування даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (5, 'Спосіб компіляції програм', false);
 
 -- Для питання id = 6: "Яка різниця між абстрактним класом та інтерфейсом?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (6, 'Абстрактний клас може мати реалізовані методи, інтерфейс – ні', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (6, 'Інтерфейс може містити поля з реалізацією, абстрактний клас – ні', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (6, 'Немає різниці', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (6, 'Абстрактний клас завжди є фінальним', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (6, 'Абстрактний клас може мати реалізовані методи, інтерфейс – ні', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (6, 'Інтерфейс може містити поля з реалізацією, абстрактний клас – ні', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (6, 'Немає різниці', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (6, 'Абстрактний клас завжди є фінальним', false);
 
 -- Для питання id = 7: "Що таке реляційна база даних?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (7, 'База даних, що використовує таблиці для зберігання даних', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (7, 'База даних без структурованого формату', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (7, 'Система для обробки великих даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (7, 'Механізм збереження файлів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (7, 'База даних, що використовує таблиці для зберігання даних', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (7, 'База даних без структурованого формату', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (7, 'Система для обробки великих даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (7, 'Механізм збереження файлів', false);
 
 -- Для питання id = 8: "Що таке SQL?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (8, 'Мова програмування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (8, 'Мова запитів до баз даних', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (8, 'Операційна система', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (8, 'Фреймворк для веб-розробки', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (8, 'Мова програмування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (8, 'Мова запитів до баз даних', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (8, 'Операційна система', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (8, 'Фреймворк для веб-розробки', false);
 
 -- Для питання id = 9: "Які типи зв''язків існують у базах даних?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (9, 'Один до одного, один до багатьох, багатьох до багатьох', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (9, 'Лінійні та нелінійні', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (9, 'Динамічні та статичні', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (9, 'Основні та додаткові', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (9, 'Один до одного, один до багатьох, багатьох до багатьох', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (9, 'Лінійні та нелінійні', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (9, 'Динамічні та статичні', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (9, 'Основні та додаткові', false);
 
 -- Для питання id = 10: "Що таке нормалізація?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (10, 'Процес структурування даних для мінімізації надлишковості', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (10, 'Метод збільшення продуктивності запитів', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (10, 'Операція об''єднання таблиць', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (10, 'Спосіб резервного копіювання даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (10, 'Процес структурування даних для мінімізації надлишковості', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (10, 'Метод збільшення продуктивності запитів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (10, 'Операція об''єднання таблиць', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (10, 'Спосіб резервного копіювання даних', false);
 
 -- Для питання id = 11: "Які існують нормальні форми?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (11, 'Перша, друга, третя, Бойс-Коддова', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (11, 'Лінійна, квадратична, експоненціальна', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (11, 'Сирі дані та нормалізовані дані', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (11, 'Прості та складні', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (11, 'Перша, друга, третя, Бойс-Коддова', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (11, 'Лінійна, квадратична, експоненціальна', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (11, 'Сирі дані та нормалізовані дані', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (11, 'Прості та складні', false);
 
 -- Для питання id = 12: "Що таке денормалізація?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (12, 'Процес повернення до схеми з надлишковими даними з метою оптимізації запитів', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (12, 'Процес нормалізації даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (12, 'Метод шифрування даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (12, 'Операція об''єднання даних з різних джерел', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (12,
+        'Процес повернення до схеми з надлишковими даними з метою оптимізації запитів',
+        true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (12, 'Процес нормалізації даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (12, 'Метод шифрування даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (12, 'Операція об''єднання даних з різних джерел', false);
 
 -- Для питання id = 13: "Які алгоритми сортування ви знаєте?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (13, 'Bubble Sort, Merge Sort, QuickSort', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (13, 'Binary Search, Linear Search', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (13, 'DFS, BFS', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (13, 'Hashing, Encryption', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (13, 'Bubble Sort, Merge Sort, QuickSort', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (13, 'Binary Search, Linear Search', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (13, 'DFS, BFS', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (13, 'Hashing, Encryption', false);
 
 -- Для питання id = 14: "Що таке бінарний пошук?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (14, 'Алгоритм пошуку в відсортованому масиві', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (14, 'Метод сортування даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (14, 'Техніка компіляції коду', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (14, 'Функція хешування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (14, 'Алгоритм пошуку в відсортованому масиві', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (14, 'Метод сортування даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (14, 'Техніка компіляції коду', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (14, 'Функція хешування', false);
 
 -- Для питання id = 15: "Поясніть принцип роботи алгоритму QuickSort."
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (15, 'Розбиває масив на підмасиви і рекурсивно сортує їх', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (15, 'Використовує бінарний пошук для сортування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (15, 'Застосовує метод бульбашкового сортування', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (15, 'Сортує шляхом обміну елементів за фіксованою схемою', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (15, 'Розбиває масив на підмасиви і рекурсивно сортує їх', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (15, 'Використовує бінарний пошук для сортування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (15, 'Застосовує метод бульбашкового сортування', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (15, 'Сортує шляхом обміну елементів за фіксованою схемою', false);
 
 -- Для питання id = 16: "Що таке стек і як він працює?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (16, 'Стек працює за принципом LIFO (останній прийшов – перший пішов)', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (16, 'Стек працює за принципом FIFO (перший прийшов – перший пішов)', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (16, 'Стек – це структура даних з випадковим доступом', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (16, 'Стек використовується для зберігання унікальних значень', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (16, 'Стек працює за принципом LIFO (останній прийшов – перший пішов)', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (16, 'Стек працює за принципом FIFO (перший прийшов – перший пішов)', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (16, 'Стек – це структура даних з випадковим доступом', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (16, 'Стек використовується для зберігання унікальних значень', false);
 
 -- Для питання id = 17: "Що таке черга?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (17, 'Черга працює за принципом FIFO (перший прийшов – перший пішов)', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (17, 'Черга працює за принципом LIFO', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (17, 'Черга – це тип бази даних', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (17, 'Черга – це механізм управління потоками', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (17, 'Черга працює за принципом FIFO (перший прийшов – перший пішов)', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (17, 'Черга працює за принципом LIFO', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (17, 'Черга – це тип бази даних', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (17, 'Черга – це механізм управління потоками', false);
 
 -- Для питання id = 18: "Які основні властивості хеш-таблиці?"
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (18, 'Швидкий доступ до даних за ключем', true);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (18, 'Відсортованість елементів', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (18, 'Підтримка рекурсивних алгоритмів', false);
-INSERT INTO answer_option (question_id, option_text, is_correct) VALUES (18, 'Використання стека для зберігання елементів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (18, 'Швидкий доступ до даних за ключем', true);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (18, 'Відсортованість елементів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (18, 'Підтримка рекурсивних алгоритмів', false);
+INSERT INTO answer_option (question_id, option_text, is_correct)
+VALUES (18, 'Використання стека для зберігання елементів', false);
 
+
+--Посилання
+CREATE TABLE links
+(
+    id          int PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+    title       VARCHAR(255) NOT NULL,
+    url         TEXT         NOT NULL,
+    description TEXT,
+    category    VARCHAR(50)  NOT NULL CHECK (category IN ('STUDY', 'THESIS', 'NOTES', 'ARCHIVES'))
+);

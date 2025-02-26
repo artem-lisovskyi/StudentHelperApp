@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/font-icons.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Res3</title>
+    <title>Conspectus</title>
 </head>
 <body>
 <section class="first-section">
@@ -17,5 +17,8 @@
         <div th:replace="fragments/header :: header"></div>
     </div>
 </section>
+
+<div th:replace="fragments/link_fragment :: linkListFragment('Корисні посилання на готові конспекти', ${links})"></div>
+
 </body>
 </html>
