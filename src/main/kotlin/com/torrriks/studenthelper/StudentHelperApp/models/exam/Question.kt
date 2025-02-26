@@ -18,7 +18,7 @@ data class Question(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
-
+    
     @Column(name = "question_text")
     val questionText: String,
 
