@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Latest News</h1>
+    <form th:method="POST" th:action="@{/logout}" class="logout-form">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+
+<a th:href="@{/exam}">Trial Exam</a>
+<br/>
+<a th:href="@{/summarize}">Summarize Lectures</a>
+<br/>
+<a th:href="@{/resources}">Useful Resources</a>
+<br/>
+
+
+<div th:if="${newsList.isEmpty()}">
+    <p>No news available</p>
+</div>
+
+<div class="news-container">
+    <div th:each="news : ${newsList}" class="news-item">
+        <h2 th:text="${news.title}"></h2>
+        <p th:text="${news.content}"></p>
+        <img th:src="${news.imageUrl}" alt="News Image">
+        <p><small th:text="${#dates.format(news.createdAt, 'yyyy-MM-dd')}"></small></p>
+    </div>
+</div>
+
+</body>
+</html>

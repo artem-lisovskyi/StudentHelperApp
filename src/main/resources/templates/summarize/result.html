@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lecture Summary</title>
+</head>
+<body>
+<h2>Lecture Summary</h2>
+<p th:text="${summary}"></p>
+<a th:href="@{/summarize}">Upload another file</a>
+</body>
+</html>
