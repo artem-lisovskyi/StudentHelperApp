@@ -1,39 +1,522 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>News List</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="stylesheet" href="/css/font-icons.css">
+    <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <title>Examius</title>
 </head>
 <body>
 
-<header>
-    <h1>Latest News</h1>
-    <form th:method="POST" th:action="@{/logout}" class="logout-form">
-        <input type="submit" value="Logout">
-    </form>
-</header>
+<section class="first-section">
 
-<a th:href="@{/exam}">Trial Exam</a>
-<br/>
-<a th:href="@{/summarize}">Summarize Lectures</a>
-<br/>
-<a th:href="@{/resources}">Useful Resources</a>
-<br/>
+    <div class="wrapper">
+        <div th:replace="fragments/header :: header"></div>
+        <div class="first-content">
+            <h2>Examius</h2>
+            <div class="btm-line"></div>
+            <h1>Красивый текст тут</h1>
+            <p>И красивый текст здесь</p>
+        </div>
+    </div>
+</section>
+<!--------------------- second --------------------->
+
+<section class="second-section">
+    <div class="wrapper">
+
+        <div class="second-content">
+            <div class="two-title">
+                <h2>Homefront</h2>
+                <p>Download Now</p>
+            </div>
+
+            <div class="btm-line"></div>
+
+            <h1>
+                Is constantly evolving to experiences for gamers.
+            </h1>
+
+            <p class="sec-text">
+                Come with a plan or leave in defeat! Welcome to Boom Beach, an epic combat
+                strategy game where your brains and your troop`s
+            </p>
+
+            <div class="app-google">
+                <div class="btn-app">
+                    <a href="#">app store</a>
+                </div>
+                <div class="btn-google">
+                    <a href="#">google store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-<div th:if="${newsList.isEmpty()}">
-    <p>No news available</p>
-</div>
+<!--------------------- third --------------------->
 
-<div class="news-container">
-    <div th:each="news : ${newsList}" class="news-item">
-        <h2 th:text="${news.title}"></h2>
-        <p th:text="${news.content}"></p>
-        <img th:src="${news.imageUrl}" alt="News Image">
-        <p><small th:text="${#dates.format(news.createdAt, 'yyyy-MM-dd')}"></small></p>
+<section class="third-section">
+    <div class="wrapper">
+        <div th:if="${newsList.isEmpty()}">
+            <p>No news available</p>
+        </div>
+
+        <div class="news-container">
+            <div th:each="news : ${newsList}" class="news-item">
+                <h2 th:text="${news.title}"></h2>
+                <p th:text="${news.content}"></p>
+                <img th:src="${news.imageUrl}" alt="News Image">
+                <p><small
+                        th:text="${#dates.format(news.createdAt, 'yyyy-MM-dd')}"></small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--------------------- fourth --------------------->
+
+<section class="fourth-section">
+    <div class="wrapper">
+
+        <div class="top-fourth">
+            <div class="title-fourth">
+                <h2>Who we are</h2>
+                <div class="small-line"></div>
+            </div>
+            <div class="fourth-top-text">
+                You may have seen us in the Dinosaurs' Den where we were we told that we
+                didn't need them because we were already doing it so well <span>ourselves, so that's what we have continued</span>
+                to do. We create basically
+            </div>
+        </div>
+
+
+        <!--------------------- slider-start --------------------->
+
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div class="slider__item filter">
+                    <img src="/img/person.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person1.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item filter">
+                    <img src="/img/person2.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person3.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person4.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person5.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person6.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person7.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person8.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person9.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person10.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person11.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person12.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person13.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person1.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person2.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person3.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person4.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person5.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person6.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person7.png" alt="staff">
+                </div>
+
+                <!-- -------------------------------------- -->
+
+                <div class="slider__item">
+                    <img src="/img/person8.png" alt="staff">
+                </div>
+
+            </div>
+        </div>
+
+        <!--------------------- slider-end --------------------->
+
+
+        <div class="staff">
+            <p>Our staff</p>
+        </div>
+    </div>
+</section>
+
+<!--------------------- fifth --------------------->
+
+<section class="fifth-section">
+    <div class="wrapper">
+
+        <div class="top-fifth">
+            <div class="title-fifth">
+                <h2>Work with us!</h2>
+                <div class="small-line"></div>
+            </div>
+            <div class="who-text">
+                A long established fact that a reader will be distracted by the readable
+                content of a page when looking at its layout. The point of using Lorem
+                Ipsum
+            </div>
+        </div>
+
+        <div class="block-fifth">
+            <div class="fifth-left">
+                <div class="work-content">
+                    <h2>
+                        Software Developer/Analyst - Web Developer
+                    </h2>
+
+                    <div class="geo-and-time">
+                        <div class="geo">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>New York, NY 10011 (Chelsea area)</p>
+                        </div>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>12 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="info-work">
+                        Back-end development experience in PHP 5, and a strong
+                        understanding Object Programming within an MVC framework
+                    </div>
+
+                    <div class="button-block">
+                        <a href="#">APPLY NOW</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fifth-right">
+                <div class="work-content">
+                    <h2>
+                        UI Designer / Backend Developer
+                    </h2>
+
+                    <div class="geo-and-time">
+                        <div class="geo">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>New York, NY</p>
+                        </div>
+                        <div class="time">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="info-work">
+                        PHP and/or Java. Architect features with the development team.
+                        Krossover is looking for a Web Application Developer to join our
+                        team of smart developers
+                    </div>
+                    <div class="button-block">
+
+                        <a href="#">APPLY NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--------------------- sixth --------------------->
+
+<section class="sixth-section">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+        <div class="sixth-blocks">
+
+            <div class="blog">
+                <div class="blog-title">
+                    <h2>Blog</h2>
+                    <a href="#">View More</a>
+                </div>
+
+                <div class="blog-content">
+                    <div class="sixth-blocks-wrap">
+                        <div class="blog-top-content">
+                            <div class="avatar">
+                                <img src="/img/av-pers.png" alt="avatar" width="60px">
+                            </div>
+                            <div class="block-text">
+                                <a class="block-content-title">
+                                    Big day for Next Games –Compass Point: West is out
+                                </a>
+                                <p class="blog-data">
+                                    March 26, 2015
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="blog-bottom-content">
+                            <div class="avatar">
+                                <img src="/img/av-man.png" alt="avatar" width="60px">
+                            </div>
+                            <div class="block-text">
+                                <a class="block-content-title">
+                                    Next Games reveals Compass Point: West The first in a
+                                    series
+                                </a>
+                                <p class="blog-data">
+                                    November 18, 2014
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------ Press ------------------------>
+
+            <div class="press">
+                <h2>
+                    Press
+                </h2>
+
+                <div class="press-content">
+                    <div class="sixth-blocks-wrap">
+                        <div class="press-title">
+                            Next Games launches its debut title, Compass Point: West,
+                            worldwide on the App Store
+                        </div>
+                        <div class="press-text">
+                            HELSINKI, Finland — March 26, 2015 —Next Games, the Finnish
+                            mobile games studio created by veteran talent from Supercell,
+                            Rovio and Disney, today announced the worldwide release of its
+                            premier action strategy title....
+                        </div>
+                        <div class="press-link">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------ Tweets ------------------------>
+
+            <div class="tweets">
+                <div class="tweets-block">
+                    <h2>
+                        Tweets
+                    </h2>
+                    <div class="sixth-blocks-wrap">
+                        <div class="tweets-top">
+                            First details of what you can expect from @twdnomansland on
+                            the @nxtgms blog! It’s a hostile world out there.. http://
+                            <br> nxtg.ms/1NVMcNe</br>
+                        </div>
+                        <div class="tweets-bottom">
+                            ICYMI I spoke to @nxtgms about their upcoming @WalkingDead_AMC
+                            game. Check out the exclusive details and images @EW: <a
+                                href="#">http://ow.ly/Lp7N9</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="twitter-link">
+                    <i class="fa-brands fa-twitter"></i>
+                    <a href="#">@gamestudio</a>
+                </div>
+            </div>
+        </div>
+        <!-- wrapper -->
+    </div>
+</section>
+
+<!--------------------- footer --------------------->
+
+<footer>
+    <div class="wrapper">
+        <div class="top-foot">
+            <div class="foot-img">
+                <img src="/img/small-logo.png" alt="small-logo" width="30px">
+            </div>
+            <nav>
+                <ul>
+                    <li>Our Story</li>
+                    <li>What we do</li>
+                    <li>Games</li>
+                    <li>Work with us</li>
+                    <li>Support</li>
+                    <li>Contact Us</li>
+                </ul>
+            </nav>
+            <div class="foot-lang">
+                <p>Sweden( SWE )</p>
+            </div>
+        </div>
+
+        <div class="btm-foot">
+            <p class="copy">Copyright @ 2015 Gamestudio</p>
+            <p class="privacy">Privacy & Terms of Use</p>
+        </div>
+    </div>
+</footer>
+
+<!--------------------- modal-window --------------------->
+
+<div id="popup" class="popup">
+    <div class="wrapper">
+        <div class="modal-window">
+            <div class="modal-top">
+                <img src="/img/bg-modal-top.png" alt="bg-modal-top" class="bg-modal-top">
+                <img src="/img/bg-modal-logo.png" alt="bg-modal-logo"
+                     class="modal-logo-top">
+            </div>
+            <div class="modal-info">
+                <h2>Privacy Police</h2>
+                <div class="small-line"></div>
+                <p class="modal-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum, incididunt ut
+                    labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+
+
+                <div class="modal-accept">
+                    <a href="#">accept</a>
+                </div>
+                <a href="#" class="close" title="Закрыть"
+                   onclick="document.getElementById('popup').style.display='none'; return false;">Cancel</a>
+
+            </div>
+        </div>
     </div>
 </div>
 
+<script type="text/javascript">
+    var delay_popup = 200;
+    setTimeout("document.getElementById('popup').style.display='block'", delay_popup);
+</script>
+
+<!--------------------- scripts --------------------->
+
+
+<script src="https://kit.fontawesome.com/c70ee47002.js" crossorigin="anonymous"></script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

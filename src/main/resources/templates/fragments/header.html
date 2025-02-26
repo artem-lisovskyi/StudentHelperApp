@@ -1,0 +1,111 @@
+<header class="header" th:fragment="header">
+    <div class="top-menu">
+        <div class="top-left">
+            <img src="/img/full-logo.png" alt="full-logo">
+        </div>
+
+        <div class="top-right">
+            <div class="e-mail">
+                <div class="circle">
+                    <img src="/img/e-mail.png" alt="e-mail" width="14px">
+                </div>
+
+                <a href="#">info@examius.com</a>
+            </div>
+
+            <div class="change-language">
+                <div class="circle">
+                    <img src="/img/country.png" alt="e-mail" width="14px">
+                </div>
+
+                <div class="lang-title">
+                    <ul class="langs-list">
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="lang-link">Sweden</a>
+                                <i class="fa-solid fa-sort-down"></i>
+                            </div>
+
+                            <ul class="sub-lang_list">
+                                <li>
+                                    <a href="#" class="sub-lang-link">English</a>
+                                    <img src="/img/eng-country.png" alt="eng-flag"
+                                         width="16px">
+                                </li>
+                                <li>
+                                    <a href="#" class="sub-lang-link">Russian</a>
+                                    <img src="/img/rus-country.png" alt="rus-flag"
+                                         width="16px">
+                                </li>
+                                <li>
+                                    <a href="#" class="sub-lang-link">French</a>
+                                    <img src="/img/french-country.png"
+                                         alt="french-flag" width="15px">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    </div>
+
+    <div class="bottom-menu">
+        <nav>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/index}" class="menu-link">Головна</a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a href="#" class="menu-link">Посилання</a>
+                        <i class="fa-solid fa-sort-down"></i>
+                    </div>
+
+                    <ul class="sub-menu-list">
+                        <li class="sub-menu-link">
+                            <a th:href="@{/resources/res1}">We do this</a>
+                        </li>
+                        <li class="sub-menu-link">
+                            <a th:href="@{/resources/res2}">And this</a>
+                        </li>
+                        <li class="sub-menu-link">
+                            <a th:href="@{/resources/res3}">This too</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a th:href="@{/exam}" class="menu-link">Тестування</a>
+                </li>
+
+                <li>
+                    <a th:href="@{/summarize}" class="menu-link">Конспект
+                        лекцій</a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="menu-link">Contact Us</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="social">
+            <a href="#">
+                <img src="/img/fb.png" alt="facebook" width="22px">
+            </a>
+            <a href="#">
+                <img src="/img/tw.png" alt="twitter" width="22px">
+            </a>
+            <a href="#">
+                <img src="/img/yt.png" alt="youtube" width="22px">
+            </a>
+        </div>
+    </div>
+</header>

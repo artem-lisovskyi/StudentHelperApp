@@ -8,8 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping("/resources")
 class UsefulResourcesController {
 
-    @GetMapping
-    fun index(): String {
-        return "resources/index"
+    @GetMapping("/res1")
+    fun res1(): String {
+        return "resources/res1"
+    }
+
+    @GetMapping("/res2")
+    fun res2(): String {
+        return "resources/res2"
+    }
+
+    @GetMapping("/res3")
+    fun res3(): String {
+        return "resources/res3"
     }
 }
