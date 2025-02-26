@@ -1,7 +1,7 @@
-package com.torrriks.studenthelper.StudentHelperApp.services
+package com.torrriks.studenthelper.StudentHelperApp.services.news
 
-import com.torrriks.studenthelper.StudentHelperApp.models.News
-import com.torrriks.studenthelper.StudentHelperApp.repositories.NewsRepository
+import com.torrriks.studenthelper.StudentHelperApp.models.news.News
+import com.torrriks.studenthelper.StudentHelperApp.repositories.news.NewsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

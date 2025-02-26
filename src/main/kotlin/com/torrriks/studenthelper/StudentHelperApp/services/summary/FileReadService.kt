@@ -1,4 +1,4 @@
-package com.torrriks.studenthelper.StudentHelperApp.services
+package com.torrriks.studenthelper.StudentHelperApp.services.summary
 
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.text.PDFTextStripper
@@ -62,4 +62,3 @@ class FileReadService {
         }
     }
 }
-

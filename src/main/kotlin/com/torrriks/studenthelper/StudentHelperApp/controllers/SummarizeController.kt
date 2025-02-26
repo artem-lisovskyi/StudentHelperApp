@@ -1,7 +1,7 @@
 package com.torrriks.studenthelper.StudentHelperApp.controllers
 
-import com.torrriks.studenthelper.StudentHelperApp.services.FileReadService
-import com.torrriks.studenthelper.StudentHelperApp.services.SummaryService
+import com.torrriks.studenthelper.StudentHelperApp.services.summary.FileReadService
+import com.torrriks.studenthelper.StudentHelperApp.services.summary.SummaryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

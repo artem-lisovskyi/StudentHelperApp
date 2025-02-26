@@ -1,6 +1,6 @@
 package com.torrriks.studenthelper.StudentHelperApp.controllers
 
-import com.torrriks.studenthelper.StudentHelperApp.services.NewsService
+import com.torrriks.studenthelper.StudentHelperApp.services.news.NewsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
