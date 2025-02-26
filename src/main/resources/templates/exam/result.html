@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Результат тесту</title>
+</head>
+<body>
+<h1>Результати тестування</h1>
+<p>Кількість правильних відповідей: <span th:text="${correctCount}"></span></p>
+<a th:href="@{/exam}">Вибрати інший тест</a>
+</body>
+</html>

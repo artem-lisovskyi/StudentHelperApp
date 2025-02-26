@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Trial Exam</title>
+    <meta charset="UTF-8"/>
+    <title>Список предметів</title>
 </head>
 <body>
-<h1>Trial Exam Page </h1>
-<h2>Coming soon...</h2>
+<h1>Виберіть предмет для тестування</h1>
+<ul>
+    <li th:each="subject : ${subjects}">
+        <span th:text="${subject.name}"></span>
+        <form th:action="@{/exam/start}" method="post" style="display:inline;">
+            <input type="hidden" name="subjectId" th:value="${subject.id}"/>
+            <button type="submit">Розпочати тестування</button>
+        </form>
+    </li>
+</ul>
 </body>
 </html>
