@@ -15,32 +15,31 @@
 
             <div class="change-language">
                 <div class="circle">
-                    <img src="/img/country.png" alt="e-mail" width="14px">
+                    <img th:src="@{${#locale.language == 'ua' ? '/img/ua-country.png' : '/img/eng-country.png'}}"
+                         alt="flag" width="14px">
                 </div>
 
                 <div class="lang-title">
                     <ul class="langs-list">
                         <li>
                             <div class="dropdown">
-                                <a href="#" class="lang-link">Sweden</a>
+                                <a href="#" class="lang-link"
+                                   th:text="${#locale.language == 'ua' ? #messages.msg('lang_ua') : #messages.msg('lang_en')}">English</a>
                                 <i class="fa-solid fa-sort-down"></i>
                             </div>
 
                             <ul class="sub-lang_list">
                                 <li>
-                                    <a href="#" class="sub-lang-link">English</a>
+                                    <a href="?lang=en" class="sub-lang-link"
+                                       th:text="#{lang_en}">English</a>
                                     <img src="/img/eng-country.png" alt="eng-flag"
                                          width="16px">
                                 </li>
                                 <li>
-                                    <a href="#" class="sub-lang-link">Russian</a>
-                                    <img src="/img/rus-country.png" alt="rus-flag"
+                                    <a href="?lang=ua" class="sub-lang-link"
+                                       th:text="#{lang_ua}">Ukrainian</a>
+                                    <img src="/img/ua-country.png" alt="ua-flag"
                                          width="16px">
-                                </li>
-                                <li>
-                                    <a href="#" class="sub-lang-link">French</a>
-                                    <img src="/img/french-country.png"
-                                         alt="french-flag" width="15px">
                                 </li>
                             </ul>
                         </li>
@@ -49,7 +48,7 @@
             </div>
 
             <form th:method="POST" th:action="@{/logout}" class="logout-form">
-                <input type="submit" value="Logout">
+                <input type="submit" th:value="#{logout}">
             </form>
         </div>
     </div>
@@ -58,42 +57,47 @@
         <nav>
             <ul class="menu-list">
                 <li>
-                    <a th:href="@{/index}" class="menu-link">Головна</a>
+                    <a th:href="@{/index}" class="menu-link" th:text="#{home}">Головна</a>
                 </li>
                 <li>
                     <div class="dropdown">
-                        <a href="#" class="menu-link">Корисні матеріали</a>
+                        <a href="#" class="menu-link" th:text="#{useful_resources}">Корисні
+                            матеріали</a>
                         <i class="fa-solid fa-sort-down"></i>
                     </div>
 
                     <ul class="sub-menu-list">
                         <li class="sub-menu-link">
-                            <a th:href="@{/resources/thesis}">Тези</a>
+                            <a th:href="@{/resources/thesis}" th:text="#{thesis}">Тези</a>
                         </li>
                         <li class="sub-menu-link">
-                            <a th:href="@{/resources/archive}">Архів робіт</a>
+                            <a th:href="@{/resources/archive}" th:text="#{archive}">Архів
+                                робіт</a>
                         </li>
                         <li class="sub-menu-link">
-                            <a th:href="@{/resources/useful}">Цікаві посилання</a>
+                            <a th:href="@{/resources/useful}" th:text="#{useful_links}">Цікаві
+                                посилання</a>
                         </li>
                         <li class="sub-menu-link">
-                            <a th:href="@{/resources/notes}">Готові конспекти</a>
+                            <a th:href="@{/resources/notes}" th:text="#{notes}">Готові
+                                конспекти</a>
                         </li>
                     </ul>
                 </li>
 
                 <li>
-                    <a th:href="@{/exam}" class="menu-link">Тестування</a>
+                    <a th:href="@{/exam}" class="menu-link"
+                       th:text="#{exam}">Тестування</a>
                 </li>
 
                 <li>
-                    <a th:href="@{/summarize}" class="menu-link">Конспект
+                    <a th:href="@{/summarize}" class="menu-link" th:text="#{summarize}">Конспект
                         лекцій</a>
                 </li>
 
 
                 <li>
-                    <a href="#" class="menu-link">Contact Us</a>
+                    <a href="#" class="menu-link" th:text="#{contact_us}">Contact Us</a>
                 </li>
 
             </ul>
