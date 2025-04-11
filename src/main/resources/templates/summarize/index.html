@@ -11,12 +11,12 @@
     <title>Upload Lecture PDF</title>
 </head>
 <body>
-<section class="first-section">
+<!--<section class="first-section">-->
 
-    <div class="wrapper">
-        <div th:replace="fragments/header :: header"></div>
-    </div>
-</section>
+<!--    <div class="wrapper">-->
+<!--        <div th:replace="fragments/header :: header"></div>-->
+<!--    </div>-->
+<!--</section>-->
 <h2>Upload Lecture PDF</h2>
 <form th:method="POST" enctype="multipart/form-data" th:action="@{/summarize/upload}">
     <input type="file" name="file" accept="application/pdf" required>

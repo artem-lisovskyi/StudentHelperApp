@@ -41,5 +41,4 @@ class AuthController @Autowired constructor(
         registrationService.register(user)
         return "redirect:/auth/login"
     }
-
 }

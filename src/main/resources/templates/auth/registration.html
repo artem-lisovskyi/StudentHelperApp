@@ -1,34 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru"  xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Registration page</title>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="/css/auth.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<form th:method="POST" th:action="@{/auth/registration}" th:object="${user}">
-    <label for="email">Enter your email:</label>
-    <input type="text" name="email" id="email">
-    <div style="color:red" th:if="${#fields.hasErrors('email')}"
-         th:errors="*{email}">Email errors
-    </div>
-    <br/>
-    <label for="username">Enter username:</label>
-    <input type="text" name="username" id="username"/>
-    <div style="color:red" th:if="${#fields.hasErrors('username')}"
-         th:errors="*{username}">
-        Username Errors
-    </div>
-    <br/>
+    <div class="container">
+        <div class="form">
+            <h2>Sign Up</h2>
+            <form th:method="POST" th:action="@{/auth/registration}" th:object="${user}">
+                <div class="input">
+                    <input type="text" name="username" id="username" class="form-control" required />
+                    <label for="username">Name</label>
+                    <span class="spin"></span>
+                    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+                        Name Errors
+                    </div>
+                </div>
+                <div class="input">
+                    <input type="text" name="email" id="email" class="form-control" required>
+                    <label for="email">E-mail:</label>
+                    <span class="spin"></span>
+                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        Email errors
+                    </div>
+                </div>
+                <div class="input">
+                    <input type="password" name="password" id="password" class="form-control" required>
+                    <label for="password">Password</label>
+                    <span class="spin"></span>
+                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                        Password Errors
+                    </div>
+                </div>
+                <div class="input">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" required
+                           oninput="checkPasswordMatch()">
+                    <label for="confirm_password">Repeat password</label>
+                    <span class="spin"></span>
+                    <div id="passwordMatchError" style="color:red; display:none;">
+                        Passwords do not match
+                    </div>
+                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                        Passwords do not match
+                    </div>
+                    <script>
+                        function checkPasswordMatch() {
+                            const password = document.getElementById('password').value;
+                            const confirmPassword = document.getElementById('confirm_password').value;
+                            const errorDiv = document.getElementById('passwordMatchError');
+                            
+                            if (password !== confirmPassword) {
+                                errorDiv.style.display = 'block';
+                            } else {
+                                errorDiv.style.display = 'none';
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="input">
+                    <input type="submit" name="submit" class="btn btn-primary" value="SUBMIT">
+                </div>
+                <p>Маєте аккаунт? <a th:href="@{/auth/login}"> - LOGIN</a></p>
+            </form>
+        </div>
 
-    <label for="password">Enter password:</label>
-    <input type="password" name="password" id="password">
-    <div style="color:red" th:if="${#fields.hasErrors('password')}"
-         th:errors="*{password}">
-        Password Errors
+        <div class="blob"></div>
     </div>
-
-    <input type="submit" name="Sign up!">
-</form>
-
 </body>
+
 </html>

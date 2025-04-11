@@ -24,7 +24,17 @@ class SecurityConfig @Autowired constructor(private val userDetailService: UserD
         http
             .authorizeHttpRequests { authorize ->
                 authorize
-                    .requestMatchers("/auth/login", "/auth/registration", "/error")
+                    .requestMatchers(
+                        "/auth/login",
+                        "/auth/registration",
+                        "/index",
+                        "/error",
+                        "/css/**",
+                        "/js/**",
+                        "/img/**",
+                        "/static/**",
+                        "/fonts/**"
+                    )
                     .permitAll()
                     .anyRequest().hasAnyRole("USER")
             }
@@ -33,8 +43,7 @@ class SecurityConfig @Autowired constructor(private val userDetailService: UserD
                     .defaultSuccessUrl("/index", true).failureUrl("/auth/login?error")
             }
             .logout { logout ->
-                logout.logoutUrl("/logout").logoutSuccessUrl("/auth/login")
-
+                logout.logoutUrl("/logout").logoutSuccessUrl("/auth/registration")
             }
         return http.build()
     }

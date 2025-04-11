@@ -1,0 +1,487 @@
+body {
+    font-family: "Alegreya Sans SC", sans-serif;
+    background: #fff;
+    color: #333;
+    background-image: url(../img/blob-bg.png);
+    background-size: 100%;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+
+/* -------------- header --------------*/
+
+body .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    border-bottom: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(73, 78, 146, 0.269);
+    backdrop-filter: blur(18px);
+    -weblit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 10;
+    color: #fff;
+}
+
+.logo {
+    color: #110202;
+    font-family: "Girassol", serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.auth input[type="image"] {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+/* -------------- burger --------------*/
+
+.burger-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.burger {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border: none;
+    background: transparent;
+    width: 30px;
+    height: 26px;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #000;
+}
+
+.burger::before {
+    top: 0;
+    box-shadow: 0 11px 0 #000;
+    transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+}
+
+.burger::after {
+    bottom: 0;
+    transition: bottom .3s .15s, transform .3s;
+}
+
+.burger-checkbox:checked+.burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+    transition: box-shadow .15s, top .3s, transform .3s .15s;
+}
+
+.burger-checkbox:checked+.burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom .3s, transform .3s .15s;
+}
+
+.menu-list {
+    top: 15px;
+    right: 0;
+    position: absolute;
+    display: grid;
+    gap: 20px;
+    padding: 70px 0 30px 0;
+    margin: 0;
+    background: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    transform: translateX(100%);
+    transition: .3s;
+    width: 300px;
+}
+
+.menu-item {
+    display: block;
+    padding: 8px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    line-height: 30px;
+    /* text-align: right;
+    padding-right: 75px; */
+}
+
+.menu-item::before {
+    content: "";
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250%;
+    height: 250%;
+    background: radial-gradient(circle, #bbfcff 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.menu-item:hover::before {
+    opacity: 1;
+}
+
+.burger-checkbox:checked~.menu-list {
+    transform: translateX(0);
+}
+
+
+/* -------------- footer --------------*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 60px;
+    border-top: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(73, 78, 146, 0.269);
+    backdrop-filter: blur(18px);
+    -weblit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 10;
+    color: #fff;
+}
+
+.logo-foot {
+    color: #110202;
+    font-family: "Girassol", serif;
+    font-size: 30px;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    text-decoration: none;
+}
+
+.footer-buttons {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer-buttons a {
+    background: linear-gradient(270deg, rgb(201, 248, 255), rgb(209, 211, 255), rgb(255, 208, 250));
+    background-size: 600% 600%;
+    animation: gradientFlow 8s ease infinite;
+    border: none;
+    padding: 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    border: solid rgb(119, 119, 119) 2px;
+    color: #000;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+footer p {
+    flex: 1;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: right;
+}
+
+
+/* -------------- cursor --------------*/
+
+
+/* -------------- main content --------------*/
+
+main .bottom-line {
+    height: 1px;
+    width: 60%;
+    background-color: #bebebe;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --------------------- */
+
+main {
+    padding: 0 110px;
+}
+
+main .main-first {
+    padding: 130px 0;
+    display: flex;
+}
+
+main .main-first h1 {
+    color: #110202;
+    font-family: "Girassol", serif;
+    font-size: 115px;
+    font-weight: lighter;
+    line-height: 20px;
+}
+
+main .main-first p {
+    width: 70%;
+    color: #110202;
+    margin-top: 25px;
+    font-size: 18px;
+    margin-left: 10px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+main .main-first p span {
+    border-bottom: 1px solid black;
+}
+
+main .main-first .main-first-sec {
+    margin-right: 130px;
+}
+
+
+/* -------------- main - second --------------*/
+
+main .main-second {
+    padding: 130px 0px 130px 140px;
+    display: flex;
+}
+
+main .main-second .main-second-sec {
+    margin-left: 60px;
+}
+
+main .main-second .main-second-sec h1 {
+    margin-top: 0;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: "Alegreya SC", serif;
+    width: 70%;
+}
+
+main .main-second .main-second-sec .line-text {
+    display: flex;
+    width: 75%;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+main .main-second .main-second-sec .line-text .line {
+    height: 2px;
+    background-color: #6f6f6f;
+    width: 70px;
+}
+
+main .main-second .main-second-sec .line-text p {
+    font-size: 18px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    margin-left: 20px;
+}
+
+main .main-second .main-second-sec .sec-button {
+    height: 50px;
+    width: 210px;
+    background: linear-gradient(90deg, rgba(151, 150, 240, 1) 0%, rgba(251, 199, 212, 1) 100%);
+    border-radius: 15px;
+    box-shadow: 0px 19px 52.5px #b0aee3;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-size: 200% 100%;
+    background-position: right center;
+    transition: background-position 1.5s ease, background-size 1.5s ease;
+}
+
+main .main-second .main-second-sec .sec-button:hover {
+    background-position: left center;
+    background-size: 200% 100%;
+}
+
+main .main-second .main-second-sec .sec-button a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+}
+
+
+/* -------------- main - third --------------*/
+
+main .main-third {
+    padding: 130px 110px 130px 140px;
+    display: flex;
+}
+
+main .main-third .main-third-fir h1 {
+    margin-top: 0;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: "Alegreya SC", serif;
+}
+
+main .main-third .main-third-fir .line-text {
+    display: flex;
+    width: 75%;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+main .main-third .main-third-fir .line-text .line {
+    height: 2px;
+    background-color: #6f6f6f;
+    width: 70px;
+}
+
+main .main-third .main-third-fir .line-text p {
+    font-size: 18px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    margin-left: 20px;
+}
+
+main .main-third .main-third-fir .thi-button {
+    height: 50px;
+    width: 180px;
+    background: linear-gradient(90deg, rgba(97, 144, 232, 1) 0%, rgba(167, 191, 232, 1) 100%);
+    border-radius: 15px;
+    box-shadow: 0px 19px 52.5px #9c9adb;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-size: 200% 100%;
+    background-position: right center;
+    transition: background-position 1.5s ease, background-size 1.5s ease;
+}
+
+main .main-third .main-third-fir .thi-button:hover {
+    background-position: left center;
+    background-size: 200% 100%;
+}
+
+main .main-third .main-third-fir .thi-button a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+}
+
+main .main-third .main-third-sec {
+    margin-right: 20px;
+}
+
+
+/* -------------- main - fourth --------------*/
+
+main .main-fourth {
+    padding: 130px 120px 130px 140px;
+    display: flex;
+}
+
+main .main-fourth .main-fourth-sec {
+    text-align: right;
+    width: 67%;
+}
+
+main .main-fourth .main-fourth-sec h1 {
+    margin-top: 0;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: "Alegreya SC", serif;
+}
+
+main .main-fourth .main-fourth-sec .line-text {
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+main .main-fourth .main-fourth-sec .line-text .line {
+    height: 2px;
+    background-color: #6f6f6f;
+    width: 70px;
+}
+
+main .main-fourth .main-fourth-sec .line-text p {
+    font-size: 18px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    margin-right: 20px;
+}
+
+main .main-fourth .main-fourth-sec .fou-button {
+    height: 50px;
+    width: 180px;
+    float: right;
+    background: linear-gradient(90deg, rgba(246, 155, 170, 1) 0%, rgba(159, 164, 238, 1) 100%);
+    border-radius: 15px;
+    box-shadow: 0px 19px 52.5px #9c9adb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 200% 100%;
+    background-position: right center;
+    transition: background-position 1.5s ease, background-size 1.5s ease;
+}
+
+main .main-fourth .main-fourth-sec .fou-button:hover {
+    background-position: left center;
+    background-size: 200% 100%;
+}
+
+main .main-fourth .main-fourth-sec .fou-button a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+}
