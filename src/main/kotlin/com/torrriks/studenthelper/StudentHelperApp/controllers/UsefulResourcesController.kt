@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping("/resources")
 class UsefulResourcesController @Autowired constructor(private val linkService: LinkService) {
 
+    @GetMapping
+    fun index(): String {
+        return "resources/index"
+    }
+
     @GetMapping("/useful")
     fun studyLinks(model: Model): String {
         val links = linkService.getLinksByCategory(LinkCategory.STUDY)

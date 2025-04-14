@@ -20,6 +20,9 @@ class SummarizeController @Autowired constructor(
     private val summaryService: SummaryService
 ) {
 
+    // Store the last extracted text for regeneration
+    private var lastExtractedText: MutableMap<String, String> = mutableMapOf()
+
     @GetMapping
     fun index(): String {
         return "summarize/index"
@@ -40,18 +43,43 @@ class SummarizeController @Autowired constructor(
         }
 
         return try {
-            // Save the file and extract text
             val extractedText = fileReadService.processAndExtractText(file)
+            
+            val fileId = UUID.randomUUID().toString()
+            
+            lastExtractedText[fileId] = extractedText
 
-            // Get summary from OpenAI
             val summary = summaryService.getSummary(extractedText)
 
-            // Add to model
             model.addAttribute("summary", summary)
+            model.addAttribute("fileId", fileId)
+            model.addAttribute("title", "Конспект: ${file.originalFilename}")
 
             "summarize/result"
         } catch (e: Exception) {
             model.addAttribute("error", "Error processing file: ${e.message}")
+            "summarize/index"
+        }
+    }
+    
+    @GetMapping("/regenerate")
+    fun regenerateSummary(
+        @RequestParam("id", required = false) fileId: String?,
+        model: Model
+    ): String {
+        if (fileId == null || !lastExtractedText.containsKey(fileId)) {
+            model.addAttribute("error", "No file found for regeneration. Please upload a file again.")
+            return "summarize/index"
+        }
+        return try {
+            val extractedText = lastExtractedText[fileId]!!
+            val summary = summaryService.getSummary(extractedText)
+            model.addAttribute("summary", summary)
+            model.addAttribute("fileId", fileId)
+            model.addAttribute("title", "Оновлений конспект")
+            "summarize/result"
+        } catch (e: Exception) {
+            model.addAttribute("error", "Error regenerating summary: ${e.message}")
             "summarize/index"
         }
     }

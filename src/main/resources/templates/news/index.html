@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+<div>
+    <div th:each="news : ${newsList}">
+        <h2 th:text="${news.title}"></h2>
+        <p th:text="${news.content}"></p>
+        <img th:src="${news.imageUrl}" alt="News Image">
+        <p><small th:text="${#dates.format(news.createdAt, 'yyyy-MM-dd')}"></small></p>
+    </div>
+</div>
+</body>
+</html>

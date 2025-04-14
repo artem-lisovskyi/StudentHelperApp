@@ -6,12 +6,13 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 
-
 @Controller
-class MainController {
-
-    @GetMapping("/index")
-    fun index(): String {
-        return "main/index"
+class NewsController @Autowired constructor(
+    private val newsService: NewsService
+) {
+    @GetMapping("/news")
+    fun index(model: Model): String {
+        model.addAttribute("newsList", newsService.findAll())
+        return "news/index"
     }
 }
