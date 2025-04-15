@@ -1,0 +1,532 @@
+body {
+    background-image: url(../img/test-bg.png);
+    background-size: 100%;
+}
+
+.exam-simulator {
+    margin: 50px 50px 100px 50px;
+}
+
+.test-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.test-header h1 {
+    font-family: "Alegreya SC", serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.test-header p {
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #7b7b7b;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 35px;
+    justify-content: center;
+}
+
+.subject-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 8px rgba(105, 76, 250, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.subject-block:hover {
+    box-shadow: 0 6px 16px rgba(56, 129, 255, 0.35);
+}
+
+.subject-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border: none;
+}
+
+.subject-name {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0px;
+    font-size: 20px;
+    font-family: "Alegreya SC", serif;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.subject-name a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+}
+
+
+/* ------------------------------- */
+
+h1#ticket-number {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 32px;
+}
+
+.timer {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+}
+
+#question-container {
+    margin: 40px 130px 15px 130px;
+    background: white;
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.question-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.custom-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    user-select: none;
+    color: black;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.custom-checkbox:hover input~.checkmark {
+    background-color: #bbb;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background: radial-gradient(circle, #00F5A0 0%, #00D9F5 100%);
+    box-shadow: 0 0 10px rgba(0, 213, 245, 0.6);
+}
+
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: none;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px auto 70px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.nav-buttons a {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(108, 108, 108);
+    text-decoration: none;
+}
+
+.nav-buttons a:hover {
+    text-shadow: 2px 2px 15px rgba(236, 174, 207, 0.826);
+}
+
+.anal {
+    font-weight: 600;
+    text-align: center;
+    font-size: 20px;
+    color: #7b7b7b;
+}
+
+
+/* ------------- EXAM RESULTS PAGE ------------- */
+.result-summary {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.score-container {
+    text-align: center;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #00F5A0 0% var(--percentage),
+        #f0f0f0 var(--percentage) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 245, 160, 0.4);
+}
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.percentage {
+    position: relative;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: #333;
+}
+
+#questions-analysis {
+    margin: 40px 130px 15px 130px;
+}
+
+.question-container {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.question-container.incorrect {
+    border-left: 5px solid #ff6b6b;
+}
+
+.question-container.correct {
+    border-left: 5px solid #00F5A0;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.question-number {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.question-status {
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    border-radius: 15px;
+    padding: 3px 12px;
+}
+
+.question-status.correct {
+    background-color: rgba(0, 245, 160, 0.2);
+    color: #00a06c;
+}
+
+.question-status.incorrect {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: #c72e2e;
+}
+
+.answer-options {
+    margin-top: 20px;
+}
+
+.answer-option {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.answer-option.user-answer {
+    background-color: rgba(255, 107, 107, 0.2);
+}
+
+.answer-option.correct-answer {
+    background-color: rgba(0, 245, 160, 0.2);
+}
+
+.answer-option.user-answer.correct-answer {
+    background-color: rgba(0, 245, 160, 0.4);
+}
+
+.wrong-indicator {
+    color: #ff4747;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.correct-indicator {
+    color: #00c06b;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #694CFA;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #5236e0;
+    text-shadow: none;
+}
+
+.nav-btn {
+    padding: 10px 15px;
+    color: #5236e0;
+    background-color: rgba(105, 76, 250, 0.1);
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(105, 76, 250, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+}
+
+/* ---------------- MATERIALS ----------------*/
+
+.materials {
+    margin: 50px 50px 100px 50px;
+}
+
+.mat-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.mat-header h1 {
+    font-family: "Alegreya SC", serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.mat-header p {
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #7b7b7b;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.mat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 35px;
+    justify-content: center;
+}
+
+.mat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 8px rgba(105, 76, 250, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.mat-block:hover {
+    box-shadow: 0 6px 16px rgba(56, 129, 255, 0.35);
+}
+
+.mat-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border: none;
+}
+
+.mat-name {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0px;
+    font-size: 20px;
+    font-family: "Alegreya SC", serif;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.mat-name a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+}
+
+
+/* ---------------- NEWS ----------------*/
+
+.news {
+    margin: 50px 50px 100px 50px;
+}
+
+.news-header {
+    text-align: center;
+}
+
+.news-header h1 {
+    font-family: "Alegreya SC", serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.news-header p {
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #7b7b7b;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 50px;
+    justify-content: center;
+}
+
+.news-block {
+    background-color: white;
+    border: 1px solid black;
+    border-left: none;
+    box-shadow: 0 5px 8px rgba(105, 76, 250, 0.2);
+    transition: box-shadow 0.3s ease;
+    padding: 0;
+    overflow: hidden;
+}
+
+.news-block:hover {
+    box-shadow: 0 6px 16px rgba(56, 129, 255, 0.35);
+}
+
+.news-inner {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+.news-image {
+    flex: 0 0 20%;
+    margin: 0;
+    padding: 0;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-text {
+    flex: 1;
+    padding: 0px 30px;
+    font-family: "Alegreya Sans SC", sans-serif;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.news-text h3 {
+    margin: 0 0 10px;
+    font-family: "Alegreya SC", serif;
+    font-size: 26px;
+}
+
+.news-data {
+    margin: 0 0 10px;
+    color: #868585;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.news-text a {
+    text-decoration: none;
+    color: #868585;
+    font-weight: 500;
+    width: 90%;
+}
+
+.news-text a p {
+    margin: 0;
+}
+
+.pagination-info {
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #5236e0;
+}

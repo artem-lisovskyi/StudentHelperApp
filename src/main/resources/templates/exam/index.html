@@ -1,32 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/icon.png">
-    <link rel="stylesheet" href="/css/font-icons.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Список предметів</title>
+    <title>Тест</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<!--<section class="first-section">-->
+    <div class="header">
+        <div class="auth">
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="image" src="/img/user.png" alt="Logout">
+            </form>
+        </div>
 
-<!--    <div class="wrapper">-->
-<!--        <div th:replace="fragments/header :: header"></div>-->
-<!--    </div>-->
-<!--</section>-->
+        <a th:href="@{/index}" class="logo">Examius</a>
 
-<h1>Виберіть предмет для тестування</h1>
-<ul>
-    <li th:each="subject : ${subjects}">
-        <span th:text="${subject.name}"></span>
-        <form th:action="@{/exam/start}" method="post" style="display:inline;">
-            <input type="hidden" name="subjectId" th:value="${subject.id}"/>
-            <button type="submit">Розпочати тестування</button>
-        </form>
-    </li>
-</ul>
+        <div class="menu">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger"></label>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/summarize}" class="menu-item">Сгенерувати конспект</a>
+                </li>
+                <li>
+                    <a th:href="@{/exam}" class="menu-item">Імітація тесту</a>
+                </li>
+                <li>
+                    <a th:href="@{/resources}" class="menu-item">Корисні матеріали</a>
+                </li>
+                <li>
+                    <a th:href="@{/news}" class="menu-item">Новини університету</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="exam-simulator">
+        <div class="test-header">
+            <h1>Симулятор іспиту</h1>
+            <p>ОБЕРІТЬ ПРЕДМЕТ</p>
+        </div>
+
+        <div class="subject-grid">
+            <div class="subject-block" th:each="subject : ${subjects}" onclick="this.querySelector('form').submit();" style="cursor: pointer;">
+                <form th:action="@{/exam/start}" method="post" style="margin: 0;">
+                    <input type="hidden" name="subjectId" th:value="${subject.id}"/>
+                    <div class="subject-image">
+                        <img th:src="@{'/img/' + ${subject.imageFileName ?: 'default.png'}}" alt="Subject">
+                    </div>
+                    <div class="subject-name">
+                        <a href="javascript:void(0);" class="subject-link" th:text="${subject.name}">Subject Name</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+   <footer>
+        <a th:href="@{/index}" class="logo-foot">Examius</a>
+
+        <div class="footer-buttons">
+            <a href="https://нахуй.com.ua/">Є питання</a>
+            <a>Підтримати проєкт</a>
+        </div>
+
+        <p>&copy; Прокачуй свої знання.</p>
+    </footer>
+
 </body>
+
 </html>

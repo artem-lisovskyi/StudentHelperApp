@@ -1,26 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Resources</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матеріали</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test-mat-news.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<ul>
-    <li>
-        <a th:href="@{/resources/thesis}" th:text="#{thesis}">Тези</a>
-    </li>
-    <li>
-        <a th:href="@{/resources/archive}" th:text="#{archive}">Архів
-            робіт</a>
-    </li>
-    <li>
-        <a th:href="@{/resources/useful}" th:text="#{useful_links}">Цікаві
-            посилання</a>
-    </li>
-    <li>
-        <a th:href="@{/resources/notes}" th:text="#{notes}">Готові
-            конспекти</a>
-    </li>
-</ul>
+
+    <div class="header">
+        <div class="auth">
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="image" src="/img/user.png" alt="Logout">
+            </form>
+        </div>
+
+        <a th:href="@{/index}" class="logo">Examius</a>
+
+        <div class="menu">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger"></label>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/summarize}" class="menu-item">Сгенерувати конспект</a>
+                </li>
+                <li>
+                    <a th:href="@{/exam}" class="menu-item">Імітація тесту</a>
+                </li>
+                <li>
+                    <a th:href="@{/resources}" class="menu-item">Корисні матеріали</a>
+                </li>
+                <li>
+                    <a th:href="@{/news}" class="menu-item">Новини університету</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="materials">
+        <div class="mat-header">
+            <h1>Бібліотека матеріалів</h1>
+            <p>все, що може стати у нагоді</p>
+        </div>
+
+        <div class="mat-grid">
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/tesa.png" alt="Subject"></div>
+                <div class="mat-name"><a th:href="@{/resources/thesis}">Тези та наукові роботи</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/doc.png" alt="Subject"></div>
+                <div class="mat-name"><a href="#">Оформлення документів</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/archiv.png" alt="Subject"></div>
+                <div class="mat-name"><a th:href="@{/resources/archive}">Архів робіт студентів</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/shpora.png" alt="Subject"></div>
+                <div class="mat-name"><a th:href="@{/resources/notes}">Шпаргалки з дисциплін</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/automat.png" alt="Subject"></div>
+                <div class="mat-name"><a href="#">Лайфхаки для навчання</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/dodatki.png" alt="Subject"></div>
+                <div class="mat-name"><a href="#">Додатки для навчання</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/free.png" alt="Subject"></div>
+                <div class="mat-name"><a href="#">Безкоштовні матеріали</a></div>
+            </div>
+            <div class="mat-block">
+                <div class="mat-image"><img src="/img/dodlit.png" alt="Subject"></div>
+                <div class="mat-name"><a href="#">Додаткова література</a></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a th:href="@{/index}" class="logo-foot">Examius</a>
+
+        <div class="footer-buttons">
+            <a href="https://нахуй.com.ua/">Є питання</a>
+            <a>Підтримати проєкт</a>
+        </div>
+
+        <p>&copy; Прокачуй свої знання.</p>
+    </footer>
+    
 </body>
+
 </html>

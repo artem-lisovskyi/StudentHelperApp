@@ -15,7 +15,7 @@ const description = document.querySelector('.consp-content p');
 let fileUploaded = false;
 let textGenerated = false;
 
-uploadTrigger.addEventListener('click', function(e) {
+uploadTrigger && uploadTrigger.addEventListener('click', function(e) {
     e.preventDefault();
 
     if (!fileUploaded) {
@@ -29,7 +29,7 @@ uploadTrigger.addEventListener('click', function(e) {
     }
 });
 
-fileInput.addEventListener('change', function() {
+fileInput && fileInput.addEventListener('change', function() {
     const file = this.files[0];
     if (file) {
         fileName.style.display = 'block';
@@ -43,7 +43,7 @@ fileInput.addEventListener('change', function() {
 });
 
 // Prevent double submission and show loading state
-uploadForm.addEventListener('submit', function() {
+uploadForm && uploadForm.addEventListener('submit', function() {
     uploadTrigger.textContent = "Завантаження...";
     uploadTrigger.style.pointerEvents = 'none';
     
@@ -62,16 +62,16 @@ uploadForm.addEventListener('submit', function() {
 // Добавляем функциональность drag and drop
 const dropZone = document.getElementById('main-action');
 
-dropZone.addEventListener('dragover', function(e) {
+dropZone && dropZone.addEventListener('dragover', function(e) {
     e.preventDefault();
     this.classList.add('drag-over');
 });
 
-dropZone.addEventListener('dragleave', function() {
+dropZone && dropZone.addEventListener('dragleave', function() {
     this.classList.remove('drag-over');
 });
 
-dropZone.addEventListener('drop', function(e) {
+dropZone && dropZone.addEventListener('drop', function(e) {
     e.preventDefault();
     this.classList.remove('drag-over');
     
@@ -90,3 +90,86 @@ dropZone.addEventListener('drop', function(e) {
         }
     }
 });
+
+// Test page functionality
+// Timer functionality for test page
+function initializeTestPage() {
+    const timerElement = document.getElementById('timer');
+    const questions = document.querySelectorAll('.question');
+    
+    if (!timerElement || !questions.length) return;
+    
+    let timeLeft = 3600; // 1 hour in seconds
+    let currentQuestion = 0;
+    const totalQuestions = questions.length;
+    
+    function updateTimer() {
+        const hours = Math.floor(timeLeft / 3600);
+        const minutes = Math.floor((timeLeft % 3600) / 60);
+        const seconds = timeLeft % 60;
+        
+        timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('examForm').submit();
+        }
+        
+        timeLeft--;
+    }
+    
+    const timerInterval = setInterval(updateTimer, 1000);
+    
+    // Question navigation
+    window.showQuestion = function(index) {
+        questions.forEach(q => q.style.display = 'none');
+        questions[index].style.display = 'block';
+        
+        // Show/hide navigation buttons
+        document.getElementById('prev').style.display = index > 0 ? 'inline-block' : 'none';
+        
+        if (index === totalQuestions - 1) {
+            document.getElementById('next').style.display = 'none';
+            document.getElementById('finish').style.display = 'inline-block';
+        } else {
+            document.getElementById('next').style.display = 'inline-block';
+            document.getElementById('finish').style.display = 'none';
+        }
+    }
+    
+    window.nextQuestion = function() {
+        if (currentQuestion < totalQuestions - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }
+    }
+    
+    window.prevQuestion = function() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+        }
+    }
+    
+    // Initialize
+    showQuestion(0);
+    
+    // Обработка выбора варианта ответа
+    const checkboxes = document.querySelectorAll('.custom-checkbox');
+    checkboxes.forEach(box => {
+        box.addEventListener('click', () => {
+            const groupName = box.querySelector('input').name;
+            document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                input.closest('.custom-checkbox').classList.remove('selected');
+            });
+            box.classList.add('selected');
+        });
+    });
+}
+
+// Initialize test page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTestPage();
+});
+
+document.getElementById('ticket-id').textContent = Math.floor(Math.random() * 100) + 1;

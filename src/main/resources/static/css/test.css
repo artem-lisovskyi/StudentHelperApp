@@ -1,0 +1,166 @@
+body {
+    background-image: url(../img/test-bg.png);
+    background-size: 100%;
+}
+
+.exam-simulator {
+    padding: 50px 130px;
+}
+
+.test-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.test-header h1 {
+    font-family: "Alegreya SC", serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.test-header p {
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 35px;
+    justify-content: center;
+}
+
+.subject-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 8px rgba(105, 76, 250, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.subject-block:hover {
+    box-shadow: 0 6px 16px rgba(56, 129, 255, 0.35);
+}
+
+.subject-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border: none;
+}
+
+.subject-name {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0px;
+    font-size: 20px;
+    font-family: "Alegreya SC", serif;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.subject-name a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+}
+
+
+/* ------------------------------- */
+
+h1#ticket-number {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 32px;
+}
+
+.timer {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+}
+
+#question-container {
+    margin: 40px 130px 15px 130px;
+    background: white;
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.question-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.custom-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    user-select: none;
+    color: black;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.custom-checkbox:hover input~.checkmark {
+    background-color: #bbb;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background: radial-gradient(circle, #00F5A0 0%, #00D9F5 100%);
+    box-shadow: 0 0 10px rgba(0, 213, 245, 0.6);
+}
+
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: none;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 130px 70px 130px;
+}
+
+.nav-buttons a {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(108, 108, 108);
+    text-decoration: none;
+}
+
+.nav-buttons a:hover {
+    text-shadow: 2px 2px 15px rgba(236, 174, 207, 0.826);
+}

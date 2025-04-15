@@ -1,6 +1,5 @@
 package com.torrriks.studenthelper.StudentHelperApp.controllers
 
-import com.torrriks.studenthelper.StudentHelperApp.repositories.exam.AnswerOptionRepository
 import com.torrriks.studenthelper.StudentHelperApp.services.exam.ExamService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam
 @RequestMapping("/exam")
 class ExamController @Autowired constructor(
     private val examService: ExamService,
-    private val answerOptionRepository: AnswerOptionRepository
 ) {
 
     @GetMapping
@@ -50,8 +48,12 @@ class ExamController @Autowired constructor(
             } else null
         }.toMap()
 
-        val correctCount = examService.evaluateExam(userAnswers, answerOptionRepository)
+        val (correctCount, resultDetails) = examService.evaluateExamWithDetails(
+            userAnswers
+        )
         model.addAttribute("correctCount", correctCount)
+        model.addAttribute("totalCount", resultDetails.size)
+        model.addAttribute("resultDetails", resultDetails)
         return "exam/result"
     }
 }

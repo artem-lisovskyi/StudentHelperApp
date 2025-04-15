@@ -1,17 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni-news</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test-mat-news.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<div>
-    <div th:each="news : ${newsList}">
-        <h2 th:text="${news.title}"></h2>
-        <p th:text="${news.content}"></p>
-        <img th:src="${news.imageUrl}" alt="News Image">
-        <p><small th:text="${#dates.format(news.createdAt, 'yyyy-MM-dd')}"></small></p>
+
+    <div class="header">
+        <div class="auth">
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="image" src="/img/user.png" alt="Logout">
+            </form>
+        </div>
+
+        <a th:href="@{/index}" class="logo">Examius</a>
+
+        <div class="menu">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger"></label>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/summarize}" class="menu-item">Сгенерувати конспект</a>
+                </li>
+                <li>
+                    <a th:href="@{/exam}" class="menu-item">Імітація тесту</a>
+                </li>
+                <li>
+                    <a th:href="@{/resources}" class="menu-item">Корисні матеріали</a>
+                </li>
+                <li>
+                    <a th:href="@{/news}" class="menu-item">Новини університету</a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+
+
+    <main>
+        <div class="news">
+
+            <div class="news-header">
+                <h1>Новини університету</h1>
+                <p>у світі останніх новин</p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-block" th:each="news : ${newsList}">
+                    <div class="news-inner">
+                        <div class="news-image">
+                            <img th:src="@{'/img/' + ${news.imageUrl ?: 'default.png'}}" alt="Subject">
+                        </div>
+                        <div class="news-text">
+                            <h3 th:text="${news.title}">Новина з університету</h3>
+                            <p class="news-data" th:text="${#dates.format(news.createdAt, 'dd/MM/yyyy')}">01/01/2025</p>
+                            <a href="#">
+                                <p th:text="${news.content}">Таким чином зміцнення і розвиток структури зміцнення і розвиток структури являє собою цікавий експеримент перевірки нових пропозицій....</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fallback display if no news are available -->
+                <div class="news-block" th:if="${newsList == null || newsList.isEmpty()}">
+                    <div class="news-inner">
+                        <div class="news-image">
+                            <img src="/img/news-2.png" alt="Subject">
+                        </div>
+                        <div class="news-text">
+                            <h3>Новина з університету</h3>
+                            <p class="news-data">01/01/2025</p>
+                            <a href="#">
+                                <p>Таким чином зміцнення і розвиток структури зміцнення і розвиток структури являє собою цікавий експеримент перевірки нових пропозицій....</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <a th:href="@{/index}" class="logo-foot">Examius</a>
+
+        <div class="footer-buttons">
+            <a href="https://нахуй.com.ua/">Є питання</a>
+            <a>Підтримати проєкт</a>
+        </div>
+
+        <p>&copy; Прокачуй свої знання.</p>
+    </footer>
+
 </body>
+
 </html>

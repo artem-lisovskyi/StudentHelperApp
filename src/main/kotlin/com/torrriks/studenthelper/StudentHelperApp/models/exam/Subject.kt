@@ -21,12 +21,15 @@ data class Subject(
     @Column(name = "name")
     val name: String = "",
 
+    @Column(name="imagefilename")
+    val imageFileName: String = "",
+
     @OneToMany(mappedBy = "subject", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     val tickets: List<Ticket> = emptyList()
 ) {
-    constructor() : this(0, "", emptyList())
+    constructor() : this(0, "", "", emptyList())
 
     override fun toString(): String {
-        return "Subject(id=$id, name='$name', tickets=${tickets.forEach { it.name }})"
+        return "Subject(id=$id, name='$name', imageFileName='$imageFileName', tickets=${tickets.forEach { it.name }})"
     }
 }

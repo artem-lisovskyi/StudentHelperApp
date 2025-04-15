@@ -1,24 +1,112 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/icon.png">
-    <link rel="stylesheet" href="/css/font-icons.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Результат тесту</title>
-</head>
-<body>
-<!--<section class="first-section">-->
+    <title>Результати тесту</title>
 
-<!--    <div class="wrapper">-->
-<!--        <div th:replace="fragments/header :: header"></div>-->
-<!--    </div>-->
-<!--</section>-->
-<h1>Результати тестування</h1>
-<p>Кількість правильних відповідей: <span th:text="${correctCount}"></span></p>
-<a th:href="@{/exam}">Вибрати інший тест</a>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test-mat-news.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="auth">
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="image" src="/img/user.png" alt="Logout">
+            </form>
+        </div>
+
+        <a th:href="@{/index}" class="logo">Examius</a>
+
+        <div class="menu">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger"></label>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/summarize}" class="menu-item">Сгенерувати конспект</a>
+                </li>
+                <li>
+                    <a th:href="@{/exam}" class="menu-item">Імітація тесту</a>
+                </li>
+                <li>
+                    <a th:href="@{/resources}" class="menu-item">Корисні матеріали</a>
+                </li>
+                <li>
+                    <a th:href="@{/news}" class="menu-item">Новини університету</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <h1 id="ticket-number">Результат: <span id="result-id" th:text="${correctCount} + '/' + ${totalCount}"></span></h1>
+
+        <div class="result-summary">
+            <div class="score-container">
+                <div class="score-circle" th:style="'--percentage: ' + ${correctCount * 100 / totalCount} + '%;'">
+                    <span class="percentage" th:text="${#numbers.formatDecimal(correctCount * 100 / totalCount, 0, 0)} + '%'"></span>
+                </div>
+            </div>
+        </div>
+
+        <p class="anal">Аналіз помилок:</p>
+
+        <div id="questions-analysis">
+            <div th:each="result, status : ${resultDetails}" th:id="'question-' + ${status.index}" 
+                 class="question-container" th:classappend="${!result.isCorrect ? 'incorrect' : 'correct'}">
+                
+                <div class="question-header">
+                    <div class="question-number" th:text="'Питання ' + ${status.count}"></div>
+                    <div class="question-status" th:classappend="${result.isCorrect ? 'correct' : 'incorrect'}">
+                        <span th:text="${result.isCorrect ? 'Правильно' : 'Неправильно'}"></span>
+                    </div>
+                </div>
+                
+                <div class="question-text" th:text="${result.question.questionText}"></div>
+                
+                <div class="answer-options">
+                    <div th:each="option : ${result.question.answerOptions}" class="answer-option"
+                         th:classappend="${option.id == result.userAnswer.id ? 'user-answer' : ''} + ' ' + 
+                                        ${option.isCorrect ? 'correct-answer' : ''}">
+                        <span th:text="${option.optionText}"></span>
+                        <span th:if="${option.id == result.userAnswer.id && !option.isCorrect}" class="wrong-indicator">✗</span>
+                        <span th:if="${option.isCorrect}" class="correct-indicator">✓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagination-info" th:if="${resultDetails.size() > 1}">
+            <span id="current-page">1</span> / <span id="total-pages" th:text="${resultDetails.size()}"></span>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="#" id="prev" class="nav-btn" th:if="${resultDetails.size() > 1}">Попереднє питання</a>
+            <a th:href="@{/exam}" class="back-button">Повернутися до тестів</a>
+            <a href="#" id="next" class="nav-btn" th:if="${resultDetails.size() > 1}">Наступне питання</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <a th:href="@{/index}" class="logo-foot">Examius</a>
+
+        <div class="footer-buttons">
+            <a href="mailto:support@examius.com">Є питання</a>
+            <a th:href="@{/donate}">Підтримати проєкт</a>
+        </div>
+
+        <p>&copy; Прокачуй свої знання.</p>
+    </footer>
+
+    <script src="/js/exam-result.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 package com.torrriks.studenthelper.StudentHelperApp.services.exam
 
+import com.torrriks.studenthelper.StudentHelperApp.models.exam.AnswerOption
 import com.torrriks.studenthelper.StudentHelperApp.models.exam.Question
 import com.torrriks.studenthelper.StudentHelperApp.models.exam.Subject
 import com.torrriks.studenthelper.StudentHelperApp.models.exam.Ticket
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service
 
 class ExamService @Autowired constructor(
     private val subjectRepository: SubjectRepository,
+    private val answerOptionRepository: AnswerOptionRepository,
     private val ticketRepository: TicketRepository,
     private val questionRepository: QuestionRepository
 ) {
@@ -27,18 +29,42 @@ class ExamService @Autowired constructor(
     fun getQuestionsForTicket(ticketId: Int): List<Question> =
         questionRepository.findByTicketIdOrderByQuestionOrder(ticketId)
 
-    // Можна додати метод для оцінки результатів тестування
-    fun evaluateExam(
-        userAnswers: Map<Int, Int>,
-        answerOptionRepository: AnswerOptionRepository
-    ): Int {
+    // Метод для оцінки результатів з детальною інформацією
+    fun evaluateExamWithDetails(
+        userAnswers: Map<Int, Int>
+    ): Pair<Int, List<QuestionResult>> {
         var correctCount = 0
-        userAnswers.forEach { (_, answerOptionId) ->
-            val option = answerOptionRepository.findById(answerOptionId)
-            if (option.isPresent && option.get().isCorrect) {
-                correctCount++
+        val results = mutableListOf<QuestionResult>()
+        
+        userAnswers.forEach { (questionId, answerOptionId) ->
+            val question = questionRepository.findById(questionId).orElse(null)
+            val userAnswer = answerOptionRepository.findById(answerOptionId).orElse(null)
+            
+            if (question != null && userAnswer != null) {
+                val correctAnswer = question.answerOptions.find { it.isCorrect }
+                val isCorrect = userAnswer.isCorrect
+                
+                if (isCorrect) correctCount++
+                
+                results.add(
+                    QuestionResult(
+                        question = question,
+                        userAnswer = userAnswer,
+                        correctAnswer = correctAnswer,
+                        isCorrect = isCorrect
+                    )
+                )
             }
         }
-        return correctCount
+        
+        return Pair(correctCount, results)
     }
+
+    // Клас для зберігання результатів по кожному питанню
+    data class QuestionResult(
+        val question: Question,
+        val userAnswer: AnswerOption,
+        val correctAnswer: AnswerOption?,
+        val isCorrect: Boolean
+    )
 }

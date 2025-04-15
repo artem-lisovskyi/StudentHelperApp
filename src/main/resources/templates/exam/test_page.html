@@ -1,113 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>Тестування</title>
-    <script>
-        // Функція для форматування часу у формат hh:mm:ss
-        function formatTime(seconds) {
-            const hrs = Math.floor(seconds / 3600);
-            const mins = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
-            return (hrs < 10 ? "0" + hrs : hrs) + ":" +
-                (mins < 10 ? "0" + mins : mins) + ":" +
-                (secs < 10 ? "0" + secs : secs);
-        }
+    <meta charset="UTF-8">
+    <title>Симулятор іспиту | Білети</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test.css">
 
-        // Таймер на 1 годину (3600 секунд) для всього тесту
-        let timeLeft = 3600;
-        const timerInterval = setInterval(function() {
-            document.getElementById("timer").innerText = "Час: " + formatTime(timeLeft);
-            if(timeLeft <= 0){
-                clearInterval(timerInterval);
-                document.getElementById("examForm").submit();
-            }
-            timeLeft--;
-        }, 1000);
-
-        // Змінні для навігації
-        let currentIndex = 0;
-        let totalQuestions = 0;
-
-        window.onload = function() {
-            const questions = document.getElementsByClassName("question");
-            totalQuestions = questions.length;
-            showQuestion(currentIndex);
-            updateNavigationButtons();
-        };
-
-        // Відображення питання з заданим індексом, приховуючи інші
-        function showQuestion(index) {
-            const questions = document.getElementsByClassName("question");
-            for (let i = 0; i < questions.length; i++) {
-                questions[i].style.display = "none";
-            }
-            if (questions[index]) {
-                questions[index].style.display = "block";
-            }
-        }
-
-        // Оновлення видимості кнопок навігації
-        function updateNavigationButtons() {
-            const nextButton = document.getElementById("nextButton");
-            const finishButton = document.getElementById("finishButton");
-            if (currentIndex >= totalQuestions - 1) {
-                nextButton.style.display = "none";
-                finishButton.style.display = "inline";
-            } else {
-                nextButton.style.display = "inline";
-                finishButton.style.display = "none";
-            }
-        }
-
-        // Перехід до попереднього питання
-        function prevQuestion() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                showQuestion(currentIndex);
-                updateNavigationButtons();
-            }
-        }
-
-        // Перехід до наступного питання
-        function nextQuestion() {
-            if (currentIndex < totalQuestions - 1) {
-                currentIndex++;
-                showQuestion(currentIndex);
-                updateNavigationButtons();
-            }
-        }
-
-        // Завершення тестування – відправка форми
-        function finishTest() {
-            document.getElementById("examForm").submit();
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Girassol&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<h1>Білет: <span th:text="${ticket.name}"></span></h1>
-<div id="timer">Час: 01:00:00</div>
-<form id="examForm" th:action="@{/exam/submit}" method="post">
-    <!-- Кожне питання огортається блоком з класом "question" -->
-    <div th:each="question, iterStat : ${questions}" class="question" th:style="${iterStat.index == 0} ? 'display: block;' : 'display: none;'">
-        <fieldset>
-            <legend th:text="${question.questionText}"></legend>
-            <ul>
-                <li th:each="option : ${question.answerOptions}">
-                    <label>
-                        <input type="radio" th:name="${'question_' + question.id}" th:value="${option.id}" required />
-                        <span th:text="${option.optionText}"></span>
-                    </label>
+    <div class="header">
+        <div class="auth">
+            <form th:method="POST" th:action="@{/logout}" class="logout-form">
+                <input type="image" src="/img/user.png" alt="Logout">
+            </form>
+        </div>
+
+        <a th:href="@{/index}" class="logo">Examius</a>
+
+        <div class="menu">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger"></label>
+            <ul class="menu-list">
+                <li>
+                    <a th:href="@{/summarize}" class="menu-item">Сгенерувати конспект</a>
+                </li>
+                <li>
+                    <a th:href="@{/exam}" class="menu-item">Імітація тесту</a>
+                </li>
+                <li>
+                    <a th:href="@{/resources}" class="menu-item">Корисні матеріали</a>
+                </li>
+                <li>
+                    <a th:href="@{/news}" class="menu-item">Новини університету</a>
                 </li>
             </ul>
-        </fieldset>
+        </div>
     </div>
-    <div>
-        <!-- Кнопки навігації -->
-        <button type="button" onclick="prevQuestion()">Попереднє питання</button>
-        <button type="button" id="nextButton" onclick="nextQuestion()">Наступне питання</button>
-        <button type="button" id="finishButton" style="display: none;" onclick="finishTest()">Завершити тестування</button>
-    </div>
-</form>
+
+    <main>
+        <h1 id="ticket-number">Білет: <span id="ticket-id" th:text="${ticket.name}"></span></h1>
+
+        <div id="timer" class="timer">01:00:00</div>
+
+        <form id="examForm" th:action="@{/exam/submit}" method="post">
+            <div th:each="question, iterStat : ${questions}" class="question" th:id="'question-' + ${iterStat.index}" th:style="${iterStat.index == 0} ? 'display: block;' : 'display: none;'">
+                <div id="question-container">
+                    <div class="question-text" th:text="${question.questionText}">Питання</div>
+                    <div th:each="option : ${question.answerOptions}">
+                        <label class="custom-checkbox">
+                            <span th:text="${option.optionText}">Відповідь</span>
+                            <input type="radio" th:name="${'question_' + question.id}" th:value="${option.id}" required>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="#" id="prev" onclick="prevQuestion()">назад</a>
+                <a href="#" id="next" onclick="nextQuestion()">далі</a>
+                <a href="#" id="finish" onclick="document.getElementById('examForm').submit();" style="display: none;">завершити</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <a th:href="@{/index}" class="logo-foot">Examius</a>
+
+        <div class="footer-buttons">
+            <a href="https://нахуй.com.ua/">Є питання</a>
+            <a>Підтримати проєкт</a>
+        </div>
+
+        <p>&copy; Прокачуй свої знання.</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
 </body>
+
 </html>
